@@ -1,8 +1,19 @@
-# AWS-BloodBridgeSystem
-Create a RDS database in your aws account
+# Blood Bank Management System
 
-connect the database and your mysql workbench
+This project is a web application to manage blood requests and donations.
 
-the run ur flask application 
+## Features
+- User registration and login.
+- Submit and respond to blood requests.
+- View pending requests based on blood type.
 
-type the url and the website works fine
+## Prerequisites
+- Python 3.7 or later
+- MySQL database
+
+## Setup Instructions
+
+### 1. Install Dependencies
+Run the following command in the project directory:
+```bash
+pip install -r requirements.txt
