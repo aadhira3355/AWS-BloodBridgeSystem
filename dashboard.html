@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set a base font */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Title styling */
+h1 {
+    color: #c00;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* Subheading for pending requests */
+h2 {
+    color: #333;
+    font-size: 2em;
+    margin-top: 30px;
+}
+
+/* Style for the user information */
+p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+/* List style for requests */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+li {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+li a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.1em;
+    display: inline-block;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+}
+
+li a:hover {
+    color: #0056b3;
+}
+
+/* Style for the action links */
+p a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+p a:hover {
+    color: #0056b3;
+}
+
+/* Styling for the logout button */
+.logout-button {
+    text-decoration: none;
+    color: #ff6b6b;
+    padding: 10px 25px;
+    border: 2px solid #ff6b6b;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #ff6b6b;
+    color: #fff;
+    border-color: #ff6b6b;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    li {
+        padding: 12px;
+    }
+
+    .logout-button {
+        font-size: 1em;
+        padding: 8px 20px;
+    }
+}
+
+    </style>
+   
+    <title>Dashboard - Blood Bank</title>
+</head>
+<body>
+    <h1>Welcome, {{ user['fullname'] }}!</h1>
+    <p>Email: {{ user['email'] }}</p>
+    <p>Blood Type: {{ user['blood_type'] }}</p>
+    <h2>Pending Blood Requests</h2>
+    <ul>
+        {% for request in requests %}
+            <li>
+                Blood Type: {{ request['blood_type'] }}<br>
+                Location: {{ request['location'] }}<br>
+                Urgency: {{ request['urgency'] }}<br>
+                <a href="/respond/{{ request['id'] }}/{{ request['requester_id'] }}">Respond to Request</a>
+            </li>
+        {% else %}
+            <p>No pending requests.</p>
+        {% endfor %}
+    </ul>
+    <p><a href="/request">Make a Blood Request</a></p>
+    <p><a href="{{ url_for('logout') }}" class="logout-button">Logout</a></p>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Blood - Blood Bank</title>
+    <style>
+        /* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #fdecea, #fff5f5); /* Light red gradient */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    background-attachment: fixed;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #e63946;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Form styling */
+.request-form {
+    background: #ffffff; /* White box */
+    padding: 25px;
+    border-radius: 15px; /* Smooth rounded corners */
+    border: 3px solid rgba(230, 57, 70, 0.3); /* Light red border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 1em;
+    color: #555;
+    font-weight: bold;
+}
+
+input,
+select {
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #e63946;
+    box-shadow: 0 0 8px rgba(230, 57, 70, 0.4);
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #e63946;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #c5303e;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+
+    </style>
+    
+
+</head>
+<body>
+    <h1>Request Blood</h1>
+    <form action="/request" method="POST">
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location" required><br>
+        <label for="blood_type">Blood Type:</label>
+        <input type="text" name="blood_type" id="blood_type" required><br>
+        <label for="urgency">Urgency:</label>
+        <select name="urgency" id="urgency" required>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select><br>
+        <button type="submit">Submit Request</button>
+    </form>
+    <p><a href="/dashboard">Back to Dashboard</a></p>
+</body>
+</html>
