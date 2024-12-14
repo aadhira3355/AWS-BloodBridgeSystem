@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank</title>
+    <style>
+        /* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #fdecea, #fff5f5);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styling */
+.site-header {
+    background-color: #e63946;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.user-info,
+.auth-links {
+    margin-top: 10px;
+}
+
+.user-info p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.auth-links a,
+.user-info a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #1d3557;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin: 0 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.auth-links a:hover,
+.user-info a:hover {
+    background-color: #457b9d;
+    transform: translateY(-2px);
+}
+
+.btn-logout {
+    background-color: #c5303e;
+}
+
+.btn-logout:hover {
+    background-color: #a82432;
+}
+
+/* Main Content */
+.site-main {
+    padding: 40px 0;
+}
+
+.site-main .container {
+    text-align: center;
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blood Bank</h1>
+        {% if session.get('user') %}
+            <p>Hello, {{ session['user']['fullname'] }}! <a href="/dashboard">Go to Dashboard</a></p>
+            <p><a href="/logout">Logout</a></p>
+        {% else %}
+            <p><a href="/login">Login</a> | <a href="/register">Register</a></p>
+        {% endif %}
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

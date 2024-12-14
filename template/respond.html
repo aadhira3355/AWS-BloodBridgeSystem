@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respond to Request - Blood Bank</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Respond to Request</h1>
+    <h2>Request Details</h2>
+    <p>Location: {{ request['location'] }}</p>
+    <p>Blood Type: {{ request['blood_type'] }}</p>
+    <p>Urgency: {{ request['urgency'] }}</p>
+
+    <h2>Requester Details</h2>
+    <p>Name: {{ requester['fullname'] }}</p>
+    <p>Email: {{ requester['email'] }}</p>
+
+    <a href="/donate-blood/{{ request['id'] }}">I want to donate blood</a>
+</body>
+</html>
